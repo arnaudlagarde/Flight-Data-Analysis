@@ -69,7 +69,7 @@ services:
 
   mysql-db:
     image: mysql:8.0
-    command: --default-authentication-plugin=mysql_native_password
+    command: --default-authentication-plugin=caching_sha2_password
     environment:
       - MYSQL_ROOT_PASSWORD=root # Set your root password here; make sure it's secure
       - MYSQL_DATABASE=aeroport_db
@@ -80,7 +80,7 @@ services:
 
   db-init:
     image: mysql:8.0
-    command: --default-authentication-plugin=mysql_native_password
+    command: --default-authentication-plugin=caching_sha2_password
     volumes:
       - ./mysql-scripts:/docker-entrypoint-initdb.d
     environment:
