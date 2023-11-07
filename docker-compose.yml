@@ -91,6 +91,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
+    platform: linux/amd64
     environment:
       PMA_HOST: mysql-db
       PMA_PORT: 3306
