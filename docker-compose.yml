@@ -71,7 +71,7 @@ services:
     image: mysql:8.0
     command: --default-authentication-plugin=caching_sha2_password
     environment:
-      - MYSQL_ROOT_PASSWORD=root # Set your root password here; make sure it's secure
+      - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=aeroport_db
     volumes:
       - db_data:/var/lib/mysql
@@ -84,8 +84,19 @@ services:
     volumes:
       - ./mysql-scripts:/docker-entrypoint-initdb.d
     environment:
-      - MYSQL_ROOT_PASSWORD=root # Make sure this matches the root password from the mysql-db service
+      - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=aeroport_db
+    depends_on:
+      - mysql-db
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      PMA_HOST: mysql-db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8081:80"
     depends_on:
       - mysql-db
 
