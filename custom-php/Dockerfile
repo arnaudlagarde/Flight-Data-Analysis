@@ -1,18 +1,22 @@
-# Use an official PHP runtime as the base image
+# Use an official PHP image as the base image
 FROM php:7.4-apache
 
-# Increase post_max_size and upload_max_filesize
-RUN echo "post_max_size = 32M" > /usr/local/etc/php/conf.d/custom.ini \
-    && echo "upload_max_filesize = 32M" >> /usr/local/etc/php/conf.d/custom.ini
+# Install required PHP extensions
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Restart Apache to apply changes
+# Set PHP configuration options
+RUN echo "post_max_size = 32M" > /usr/local/etc/php/conf.d/custom-php.ini
+RUN echo "upload_max_filesize = 32M" >> /usr/local/etc/php/conf.d/custom-php.ini
+
+# Enable Apache rewrite module
+RUN a2enmod rewrite
+
+# Restart Apache
 RUN service apache2 restart
 
-# Copy your PHP application files into the container (if needed)
-# COPY ./your-php-files /var/www/html
 
-# Expose port 80 for Apache
+# Expose port 80
 EXPOSE 80
 
-# Start Apache in the foreground
+# Start Apache web server
 CMD ["apache2-foreground"]
