@@ -7,7 +7,6 @@ This repository contains code and resources for analyzing flight data using Apac
 ## Table of Contents
 
 - [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
@@ -39,22 +38,7 @@ jupyter notebook
 
 Open and run the Jupyter Notebooks in the notebooks directory to perform various analyses.
 
-Project Structure
-The project is organized as follows:
-```bash 
-flight-data-analysis/
-│
-├── data/                   # Data files (split into parts)
-│
-├── notebooks/              # Jupyter Notebooks for analysis
-│
-├── docker-compose.yml      # Docker Compose configuration
-│
-├── README.md               # Project README (this file)
-│
-├── requirements.txt        # Python package requirements
-│
-└── ...                     # Other project files
+
 ```
 Usage
 Split CSV Data
@@ -75,14 +59,9 @@ Part 12
 Download the necessary parts based on your analysis requirements.
 
 Combining Split Data
+
 To combine the split data parts into a single CSV file for analysis, you can use the following Python script:
 
-
-
-Certainly! Here's a README.md file that includes instructions for handling the split CSV files:
-
-markdown
-Copy code
 # Flight Data Analysis
 
 ## Overview
@@ -115,51 +94,7 @@ cd flight-data-analysis
 python -m venv venv
 source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 pip install -r requirements.txt
-Start Jupyter Notebook:
 
-shell
-Copy code
-jupyter notebook
-Open and run the Jupyter Notebooks in the notebooks directory to perform various analyses.
-
-Project Structure
-The project is organized as follows:
-
-bash
-Copy code
-flight-data-analysis/
-│
-├── data/                   # Data files (split into parts)
-│
-├── notebooks/              # Jupyter Notebooks for analysis
-│
-├── docker-compose.yml      # Docker Compose configuration
-│
-├── README.md               # Project README (this file)
-│
-├── requirements.txt        # Python package requirements
-│
-└── ...                     # Other project files
-Usage
-Split CSV Data
-The flight data is split into multiple parts to manage large files. You can download these parts from the following links:
-
-Part 1
-Part 2
-Part 3
-Part 4
-Part 5
-Part 6
-Part 7
-Part 8
-Part 9
-Part 10
-Part 11
-Part 12
-Download the necessary parts based on your analysis requirements.
-
-Combining Split Data
-To combine the split data parts into a single CSV file for analysis, you can use the following Python script:
 
 ```bash
 python combine_csv.py
